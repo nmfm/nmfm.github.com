@@ -65,6 +65,8 @@ function createPlayer() {
 //         }
     } else if (v.type == 'tumblr') {
         $('body').prepend('<embed id="screen" src="' + v.id + '" height="27" width="207"></embed>');
+    } else if (v.type == 'myspace') {
+        $('body').prepend('<embed id="screen" src="' + v.id + '" width="432" height="364"></embed>');
     }
 }
 
