@@ -67,6 +67,8 @@ function createPlayer() {
         $('body').prepend('<embed id="screen" src="' + v.id + '" height="27" width="207"></embed>');
     } else if (v.type == 'myspace') {
         $('body').prepend('<embed id="screen" src="' + v.id + '" width="432" height="364"></embed>');
+    } else if (v.type == 'sapo') {
+        $('body').prepend('<embed id="screen" src=http://rd3.videos.sapo.pt/play?file="' + v.id + '" type="application/x-shockwave-flash" width="410" height="349"></embed>');
     }
 }
 
