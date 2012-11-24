@@ -67,6 +67,8 @@ function createPlayer() {
         $('body').prepend('<embed id="screen" src="' + v.id + '" height="27" width="207"></embed>');
     } else if (v.type == 'myspace') {
         $('body').prepend('<embed id="screen" src="' + v.id + '" width="432" height="364"></embed>');
+    } else if (v.type == 'myspace_playlist') {
+        $('body').prepend('<iframe id="screen" width="400" height="100" style="position: relative; display: block; width: 400px; height: 100px;" src="http://www.myspace.com/music/player?ac=now&pid=' + v.id + '" allowtransparency="true" frameborder="0"></iframe>');
     } else if (v.type == 'sapo') {
         $('body').prepend('<embed id="screen" src=http://rd3.videos.sapo.pt/play?file="' + v.id + '" type="application/x-shockwave-flash" width="410" height="349"></embed>');
     } else if (v.type == 'bandcamp') {
