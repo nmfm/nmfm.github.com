@@ -58,10 +58,12 @@ function createPlayer() {
         SC.initialize({
           client_id: SNDCLOUD_CLIENT_ID
         });
-        $('#content').prepend('<div id="screen"></div>');
+        $('#content').prepend('<iframe id="screen"></iframe>');
         var scEl = document.getElementById('screen');
-        SC.oEmbed(v.id, { auto_play: true }, scEl);
-        var scWidget = SC.Widget(scEl.querySelector('iframe'));
+        //SC.oEmbed(v.id, { auto_play: true }, scEl);
+        //var scWidget = SC.Widget(scEl.querySelector('iframe'));
+        var scWidget = SC.Widget(scEl);
+        scWidget.load(v.id, { auto_play: true });
         scWidget.bind(SC.Widget.Events.FINISH, function() {
             nextVideo();
         } );
