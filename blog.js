@@ -32,7 +32,7 @@ function createPlayer() {
     $('#screen').remove();
     if (player) delete player;
     if (v.type == 'youtube') {
-        $('body').prepend('<div id="screen"></div>');
+        $('#content').prepend('<div id="screen"></div>');
         player = new YT.Player('screen', {
           videoId: videos[i].id,
           events: {
@@ -59,10 +59,12 @@ function createPlayer() {
           client_id: SNDCLOUD_CLIENT_ID
         });
         $('body').prepend('<div id="screen"></div>');
-        SC.oEmbed(v.id, { auto_play: true }, document.getElementById('screen'));
-        // 3rd arg can also be a callback function(oEmbed) {
-//           console.log('oEmbed response: ' + oEmbed);
-//         }
+        var scEl = document.getElementById('screen');
+        SC.oEmbed(v.id, { auto_play: true }, scEl);
+        var scWidget = SC.Widget(scEl);
+        scWidget.bind(SC.Widget.Events.FINISH, function() {
+            nextVideo();
+        } );
     } else if (v.type == 'tumblr') {
         $('body').prepend('<embed id="screen" src="' + v.id + '" height="27" width="207"></embed>');
     } else if (v.type == 'myspace') {
