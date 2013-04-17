@@ -60,13 +60,16 @@ function createPlayer() {
         });
         $('#content').prepend('<iframe id="screen"></iframe>');
         var scEl = document.getElementById('screen');
-        //SC.oEmbed(v.id, { auto_play: true }, scEl);
-        //var scWidget = SC.Widget(scEl.querySelector('iframe'));
-        var scWidget = SC.Widget(scEl);
-        scWidget.load(v.id, { auto_play: true });
-        scWidget.bind(SC.Widget.Events.FINISH, function() {
-            nextVideo();
-        } );
+        SC.oEmbed(v.id, { auto_play: true }, function(o, error) {
+            scEl.innerHTML = o.html;
+            var scWidget = SC.Widget(scEl.querySelector('iframe'));
+            //var scWidget = SC.Widget(scEl);
+            scWidget.load(v.id, { auto_play: true });
+            scWidget.bind(SC.Widget.Events.FINISH, function() {
+                nextVideo();
+            } );
+        };
+        
     } else if (v.type == 'tumblr') {
         $('#content').prepend('<embed id="screen" src="' + v.id + '" height="27" width="207"></embed>');
     } else if (v.type == 'myspace') {
