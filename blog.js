@@ -61,7 +61,7 @@ function createPlayer() {
         $('#content').prepend('<div id="screen"></div>');
         var scEl = document.getElementById('screen');
         SC.oEmbed(v.id, { auto_play: true }, scEl);
-        var scWidget = SC.Widget(scEl);
+        var scWidget = SC.Widget(scEl.querySelector('iframe'));
         scWidget.bind(SC.Widget.Events.FINISH, function() {
             nextVideo();
         } );
@@ -112,6 +112,10 @@ function init() {
       
       tag = document.createElement('script');
       tag.src = "http://connect.soundcloud.com/sdk.js";
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      
+      tag = document.createElement('script');
+      tag.src = "https://w.soundcloud.com/player/api.js";
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
       
       // links
