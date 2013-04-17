@@ -44,7 +44,7 @@ function createPlayer() {
         // http://developer.vimeo.com/player/embedding
         // http://developer.vimeo.com/player/js-api
         // Só consigo que funcione se carregar do localhost
-        $('body').prepend('<iframe id="screen" src="http://player.vimeo.com/video/' + v.id + '?api=1&player_id=screen" width="540" height="304" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>');
+        $('#content').prepend('<iframe id="screen" src="http://player.vimeo.com/video/' + v.id + '?api=1&player_id=screen" width="540" height="304" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>');
         $('#screen').load(function() {
             player = $f($('#screen')[0]);
             player.addEvent('ready', function() {
@@ -58,7 +58,7 @@ function createPlayer() {
         SC.initialize({
           client_id: SNDCLOUD_CLIENT_ID
         });
-        $('body').prepend('<div id="screen"></div>');
+        $('#content').prepend('<div id="screen"></div>');
         var scEl = document.getElementById('screen');
         SC.oEmbed(v.id, { auto_play: true }, scEl);
         var scWidget = SC.Widget(scEl);
@@ -66,16 +66,16 @@ function createPlayer() {
             nextVideo();
         } );
     } else if (v.type == 'tumblr') {
-        $('body').prepend('<embed id="screen" src="' + v.id + '" height="27" width="207"></embed>');
+        $('#content').prepend('<embed id="screen" src="' + v.id + '" height="27" width="207"></embed>');
     } else if (v.type == 'myspace') {
-        $('body').prepend('<embed id="screen" src="' + v.id + '" width="432" height="364"></embed>');
+        $('#content').prepend('<embed id="screen" src="' + v.id + '" width="432" height="364"></embed>');
     } else if (v.type == 'myspace_playlist') {
         //$('body').prepend('<iframe id="screen" width="400" height="100" style="position: relative; display: block; width: 400px; height: 100px;" src="http://www.myspace.com/music/player?ac=now&pid=' + v.id + '" allowtransparency="true" frameborder="0"></iframe>');
         window.open('http://www.myspace.com/music/player?ac=now&pid=' + v.id, '_blank');
     } else if (v.type == 'sapo') {
-        $('body').prepend('<embed id="screen" src=http://rd3.videos.sapo.pt/play?file="' + v.id + '" type="application/x-shockwave-flash" width="410" height="349"></embed>');
+        $('#content').prepend('<embed id="screen" src=http://rd3.videos.sapo.pt/play?file="' + v.id + '" type="application/x-shockwave-flash" width="410" height="349"></embed>');
     } else if (v.type == 'bandcamp') {
-        $('body').prepend('<iframe id="screen" width="400" height="100" style="position: relative; display: block; width: 400px; height: 100px;" src="' + v.id + '" allowtransparency="true" frameborder="0"></iframe>');
+        $('#content').prepend('<iframe id="screen" width="400" height="100" style="position: relative; display: block; width: 400px; height: 100px;" src="' + v.id + '" allowtransparency="true" frameborder="0"></iframe>');
     }
 }
 
