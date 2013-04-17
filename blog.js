@@ -58,7 +58,7 @@ function createPlayer() {
         SC.initialize({
           client_id: SNDCLOUD_CLIENT_ID
         });
-        $('#content').prepend('<iframe id="screen"></iframe>');
+        $('#content').prepend('<div id="screen"></div>');
         var scEl = document.getElementById('screen');
         SC.oEmbed(v.id, { auto_play: true }, function(o, error) {
             scEl.innerHTML = o.html;
