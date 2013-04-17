@@ -68,7 +68,7 @@ function createPlayer() {
             scWidget.bind(SC.Widget.Events.FINISH, function() {
                 nextVideo();
             } );
-        };
+        });
         
     } else if (v.type == 'tumblr') {
         $('#content').prepend('<embed id="screen" src="' + v.id + '" height="27" width="207"></embed>');
